@@ -516,6 +516,10 @@
             <h2 class="section-title">Sobre mí</h2>
             <p class="about-description">Soy Back-End Developer (SSR) en Mercado Libre, dentro del equipo Fintech (Payouts). Desarrollo y mantengo microservicios financieros en Java 21 y Go que procesan millones de transacciones diarias en LATAM.</p>
             
+            <p style="color: var(--muted); font-size: 0.9rem; margin: 1rem 0;">
+                Herramientas de desarrollo asistido con IA: uso opencode para refactoring y generación de código boilerplate, y me mantengo actualizado con las mejores prácticas de la industria.
+            </p>
+            
             <div class="about-stats">
                 <div class="stat-item">
                     <div class="stat-number">4+</div>
@@ -542,26 +546,50 @@
         <div class="container">
             <h2 class="section-title">Skills</h2>
             <p style="color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem;">Tecnologías y herramientas con las que trabajo a diario:</p>
-            <div class="skills-grid">
-                <span class="skill-badge"><span class="tech">Java 17/21</span></span>
-                <span class="skill-badge"><span class="tech">Go</span></span>
-                <span class="skill-badge"><span class="tech">Spring Boot 3.x</span></span>
-                <span class="skill-badge"><span class="tech">Gin</span></span>
-                <span class="skill-badge"><span class="tech">Hibernate</span></span>
-                <span class="skill-badge"><span class="tech">Kafka</span></span>
-                <span class="skill-badge"><span class="tech">Redis</span></span>
-                <span class="skill-badge"><span class="tech">DynamoDB</span></span>
-                <span class="skill-badge"><span class="tech">Elasticsearch</span></span>
-                <span class="skill-badge"><span class="tech">MySQL</span></span>
-                <span class="skill-badge"><span class="tech">Docker</span></span>
-                <span class="skill-badge"><span class="tech">Kubernetes</span></span>
-                <span class="skill-badge"><span class="tech">DataDog</span></span>
-                <span class="skill-badge"><span class="tech">New Relic</span></span>
-                <span class="skill-badge"><span class="tech">SDLC Security</span></span>
-                <span class="skill-badge"><span class="tech">OAuth2/JWT</span></span>
-                <span class="skill-badge"><span class="tech">JUnit 5</span></span>
-                <span class="skill-badge"><span class="tech">Mockito</span></span>
-                <span class="skill-badge"><span class="tech">TDD</span></span>
+            
+            <!-- Skills Grouped by Category -->
+            <div style="display: grid; gap: 1.5rem; margin-top: 1rem;">
+                <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1rem;">🟢 Languages I Ship In Production</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 500;">Java 21</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">Go</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1rem;">🟡 Messaging & Streaming</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">Kafka</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">Redis</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">DynamoDB</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1rem;">🟠 Observability & Security</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">DataDog</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">New Relic</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">SDLC Security</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1rem;">🔵 Cloud & Deployment</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">Docker</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">Kubernetes</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1rem;">🧪 Testing & Quality</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">JUnit 5</span>
+                        <span style="background: var(--accent); color: var(--bd); padding: 0.2rem 0.5rem; border-radius: 4x; font-size: 0.7rem; font-weight: 500;">TDD</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -632,6 +660,16 @@
                 <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Automatización de flujos de conciliación y localización de productos, integrando con observabilidad avanzada (DataDog/New Relic) y Circuit Breaker.</div>
                 <div class="project-links">
                     <a href="https://github.com/felipaus" class="project-link">GitHub</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">organizame - App de Productividad</div>
+                <div class="project-meta">Electron · Node.js · CLI</div>
+                <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Aplicación de escritorio para gestión de tareas y organización personal. Herramienta interna optimizada para flujos de trabajo de desarrollo de software. Incluye funcionalidades de seguimiento de tiempo, gestión de proyectos y generación de reportes.</p>
+                <div class="project-links">
+                    <a href="https://github.com/felipaus/organizer_me" class="project-link">GitHub</a>
+                    <a href="https://felipaus.github.io/organizer_me/" class="project-link">Demo</a>
                 </div>
             </div>
         </div>
