@@ -4,153 +4,671 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felipe Sanchez - Back-End Developer (SSR)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {box-sizing: border-box; margin: 0; padding: 0;}
-        body {font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; color: #212529; margin: 0; line-height: 1.6;}
-        .container {max-width: 800px; margin: 0 auto; padding: 2rem 1rem;}
-        h1 {font-size: 2rem; margin-bottom: 0.5rem; color: #1e293b;}
-        h2 {font-size: 1.5rem; color: #334155; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;}
-        h3 {font-size: 1.25rem; color: #3b82f6; margin-bottom: 0.5rem;}
-        p {color: #475569; margin-bottom: 1rem;}
-        .section {margin-bottom: 3rem;}
-        .skill {display: inline-block; background: #e2e8f0; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; margin: 2px;}
-        .project {background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 1.5rem; margin-bottom: 1rem;}
-        .project h3 {color: #1e293b; margin: 0 0 0.5rem 0;}
-        .project-meta {color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;}
-        .project-links {margin-top: 0.5rem;}
-        .project-link {color: #3b82f6; text-decoration: none; font-size: 0.85rem;}
-        .contact-item {background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 1rem; margin-bottom: 0.5rem;}
-        .contact-item h3 {color: #1e293b; margin: 0 0 0.5rem 0; font-size: 1rem;}
-        .contact-item a {color: #3b82f6; text-decoration: none;}
-        .contact-item a:hover {text-decoration: underline;}
-        a {color: #1e293b; text-decoration: none;}
-        a:hover {color: #3b82f6;}
-        .footer {color: #64748b; font-size: 0.85rem; text-align: center; margin-top: 3rem;}
+        :root {
+            --bg: #0a0a0f;
+            --bg-subtle: #12121a;
+            --fg: #f0f0f5;
+            --muted: #71717a;
+            --accent: #00d4aa;
+            --accent-hover: #00f0bb;
+            --card: #1a1a24;
+            --border: #2a2a3a;
+            --gold: #ffd700;
+            --radius: 12px;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Background pattern */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(180deg, rgba(0,212,170,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(45deg, var(--border) 1px, transparent 1px),
+                linear-gradient(-45deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .header-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--fg);
+            letter-spacing: -0.5px;
+        }
+
+        .header-role {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 1rem 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0,212,170,0.1);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge span {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .hero-badge::after {
+            content: '•';
+            color: var(--muted);
+            font-size: 0.65rem;
+            margin-left: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-title {
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--fg);
+        }
+
+        .hero-description {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--fg);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--fg);
+            text-align: center;
+        }
+
+        /* About Section */
+        #about .container {
+            max-width: 800px;
+        }
+
+        .about-description {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Skills */
+        #skills .container {
+            max-width: 800px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .skill-badge {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--fg);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .skill-badge .tech {
+            color: var(--muted);
+            font-size: 0.7rem;
+        }
+
+        /* Experience */
+        .job {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .job:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--fg);
+        }
+
+        .job-company {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .job-duration {
+            color: var(--muted);
+            font-size: 0.75rem;
+            float: right;
+        }
+
+        .job-techs {
+            margin-top: 0.75rem;
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .job-tech {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        #projects .container {
+            max-width: 800px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--fg);
+        }
+
+        .project-meta {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 0.75rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Contact */
+        #contact .container {
+            max-width: 800px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem; }
+            .hero-description { font-size: 1rem; }
+            .header-container { flex-direction: column; gap: 1rem; }
+            .header-name { font-size: 1.3rem; }
+            .section-title { font-size: 1.5rem; }
+            .contact-methods { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 2rem;">
+    <div class="bg-pattern"></div>
+    <div class="grid-overlay"></div>
+
+    <header>
+        <div class="header-container container">
+            <a href="#" class="header-logo">FelipeS</a>
+            <nav>
+                <a href="#about" style="color: var(--fg); text-decoration: none; font-size: 0.9rem;">Sobre</a>
+                <a href="#experience" style="color: var(--muted); text-decoration: none; font-size: 0.9margin-left: 1rem;">Experiencia</a>
+                <a href="#skills" style="color: var(--muted); text-decoration: none; font-size: 0.9rem;">Skills</a>
+                <a href="#projects" style="color: var(--muted); text-decoration: none; font-size: 0.9rem;">Proyectos</a>
+                <a href="#contact" style="color: var(--muted); text-decoration: none; font-size: 0.9rem;">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div>
+            <div class="hero-badge">
+                <span>Back-End Developer (SSR)</span>
+            </div>
             <h1>Felipe Sanchez</h1>
-            <p>Back-End Developer (SSR)</p>
-        </header>
-
-        <!-- About -->
-        <section class="section" id="about">
-            <h2>Sobre mí</h2>
-            <p>Soy Back-End Developer (SSR) en Mercado Libre, dentro del equipo Fintech (Payouts). Desarrollo y mantengo microservicios financieros en Java 21 y Go que procesan millones de transacciones diarias en LATAM.</p>
-            <p>Mi foco es la excelencia técnica: lidero upgrades de seguridad críticos, implemento arquitecturas event-driven y soporte multi-tenant/multi-país, y trabajo con observabilidad avanzada (DataDog, New Relic). Cuento con formación universitaria en informática y me apasiona aprender constantemente.</p>
-            <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">4+ años experiencia</span>
-                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Mercado Libre</span>
-                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Java 17/21</span>
-                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Go · Spring Boot</span>
-                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Kafka · Redis</span>
-                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">SDLC Security</span>
+            <h2 class="hero-title">Backend Engineer especializado en <span>Fintech</span> y <span>Payouts</span></h2>
+            <p class="hero-description">Desarrollo microservicios financieros en Java 21 y Go que procesan millones de transacciones diarias en LATAM. Arquitecturas event-driven, Kafka, Redis y soporte multi-tenant/multi-país.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://github.com/felipaus" class="btn btn-accent">GitHub</a>
+                <a href="https://www.linkedin.com/in/felipesanchez231/" class="btn btn-outline">LinkedIn</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience -->
-        <section class="section" id="experience">
-            <h2>Experiencia</h2>
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre mí</h2>
+            <p class="about-description">Soy Back-End Developer (SSR) en Mercado Libre, dentro del equipo Fintech (Payouts). Desarrollo y mantengo microservicios financieros en Java 21 y Go que procesan millones de transacciones diarias en LATAM.</p>
+            
+            <div class="about-stats">
+                <div class="stat-item">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Años experiencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Millones</div>
+                    <div class="stat-label">Transacciones diarias</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">LATAM</div>
+                    <div class="stat-label">Países soportados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Disponibilidad SLA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <p style="color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem;">Tecnologías y herramientas con las que trabajo a diario:</p>
+            <div class="skills-grid">
+                <span class="skill-badge"><span class="tech">Java 17/21</span></span>
+                <span class="skill-badge"><span class="tech">Go</span></span>
+                <span class="skill-badge"><span class="tech">Spring Boot 3.x</span></span>
+                <span class="skill-badge"><span class="tech">Gin</span></span>
+                <span class="skill-badge"><span class="tech">Hibernate</span></span>
+                <span class="skill-badge"><span class="tech">Kafka</span></span>
+                <span class="skill-badge"><span class="tech">Redis</span></span>
+                <span class="skill-badge"><span class="tech">DynamoDB</span></span>
+                <span class="skill-badge"><span class="tech">Elasticsearch</span></span>
+                <span class="skill-badge"><span class="tech">MySQL</span></span>
+                <span class="skill-badge"><span class="tech">Docker</span></span>
+                <span class="skill-badge"><span class="tech">Kubernetes</span></span>
+                <span class="skill-badge"><span class="tech">DataDog</span></span>
+                <span class="skill-badge"><span class="tech">New Relic</span></span>
+                <span class="skill-badge"><span class="tech">SDLC Security</span></span>
+                <span class="skill-badge"><span class="tech">OAuth2/JWT</span></span>
+                <span class="skill-badge"><span class="tech">JUnit 5</span></span>
+                <span class="skill-badge"><span class="tech">Mockito</span></span>
+                <span class="skill-badge"><span class="tech">TDD</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experiencia</h2>
+            
             <div class="job">
-                <h3>Back-End Developer (SSR) — Fintech</h3>
-                <div class="job-meta">Mercado Libre • Jun 2024 — Presente</div>
-                <p>Desarrollo y mantenimiento de microservicios financieros en Java 21 y Go para el procesamiento de millones de transacciones diarias en LATAM.</p>
-                <ul>
-                    <li>Gestión de infraestructura cloud distribuida con mensajería asíncrona (Kafka) y persistencia de baja latencia (KVS: Redis/DynamoDB).</li>
-                    <li>Liderazgo en upgrades de seguridad críticos y resolución de dependencias complejas (SAST), asegurando compliance financiero.</li>
-                    <li>Implementación de arquitectura event-driven para sincronización de cuentas bancarias y operaciones batch a gran escala.</li>
-                    <li>Soporte multi-tenant / multi-país con configuración dinámica por ambiente y feature flags.</li>
-                </ul>
+                <div class="job-title">Back-End Developer (SSR) — Fintech</div>
+                <div class="job-company">Mercado Libre</div>
+                <div class="job-duration">Jun 2024 — Presente</div>
+                <div class="job-techs">
+                    <span class="job-tech">Java 21</span>
+                    <span class="job-tech">Go</span>
+                    <span class="job-tech">Kafka</span>
+                    <span class="job-tech">Redis</span>
+                    <span class="job-tech">DynamoDB</span>
+                </div>
+                <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.9rem;">Desarrollo y mantenimiento de microservicios financieros para el procesamiento de millones de transacciones diarias en LATAM. Arquitecturas event-driven, soporte multi-tenant/multi-país, upgrades de seguridad críticos y compliance financiero.</p>
             </div>
-            <div class="job">
-                <h3>Back-End Developer</h3>
-                <div class="job-meta">Mercado Libre • Ago 2022 — Jun 2024</div>
-                <ul>
-                    <li>Automatización de flujos de conciliación y localización de productos, reduciendo el trabajo manual en un 30%.</li>
-                    <li>Integración de servicios con observabilidad avanzada (DataDog/New Relic) y métricas de resiliencia (Circuit Breaker).</li>
-                    <li>Diseño de APIs robustas con Spring Boot y bases de datos relacionales/NoSQL.</li>
-                </ul>
-            </div>
-            <div class="job">
-                <h3>Developer (Microsoft Dynamics)</h3>
-                <div class="job-meta">TPSSA • Ene 2022 — Ago 2022</div>
-                <ul>
-                    <li>Diseño e integración de soluciones de negocio personalizadas en Dynamics 365 con SQL y VS.NET.</li>
-                    <li>Optimización de procesos de facturación y reportes mediante modelado de datos eficiente.</li>
-                </ul>
-            </div>
-        </section>
 
-        <!-- Skills -->
-        <section class="section" id="skills">
-            <h2>Skills</h2>
-            <p>Tecnologías y herramientas con las que trabajo a diario:</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-                <span class="skill">Java 17/21</span>
-                <span class="skill">Go</span>
-                <span class="skill">Spring Boot 3.x</span>
-                <span class="skill">Gin</span>
-                <span class="skill">Hibernate</span>
-                <span class="skill">Kafka</span>
-                <span class="skill">Redis</span>
-                <span class="skill">DynamoDB</span>
-                <span class="skill">Elasticsearch</span>
-                <span class="skill">MySQL</span>
-                <span class="skill">Docker</span>
-                <span class="skill">Kubernetes</span>
-                <span class="skill">DataDog</span>
-                <span class="skill">New Relic</span>
-                <span class="skill">SDLC Security</span>
-                <span class="skill">OAuth2/JWT</span>
-                <span class="skill">JUnit 5</span>
-                <span class="skill">Mockito</span>
-                <span class="skill">TDD</span>
+            <div class="job">
+                <div class="job-title">Back-End Developer</div>
+                <div class="job-company">Mercado Libre</div>
+                <div class="job-duration">Ago 2022 — Jun 2024</div>
+                <div class="job-techs">
+                    <span class="job-tech">Java 17</span>
+                    <span class="job-tech">Spring Boot</span>
+                    <span class="job-tech">Kafka</span>
+                    <span class="job-tech">Redis</span>
+                </div>
+                <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.9rem;">Automatización de flujos de conciliación y localización de productos, reduciendo el trabajo manual en un 30%. Integración con observabilidad avanzada (DataDog/New Relic) y Circuit Breaker patterns.</p>
             </div>
-        </section>
 
-        <!-- Projects -->
-        <section class="section" id="projects">
-            <h2>Proyectos</h2>
-            <div class="project">
-                <h3>Microservicios Financieros (LATAM)</h3>
+            <div class="job">
+                <div class="job-title">Developer (Microsoft Dynamics)</div>
+                <div class="job-company">TPSSA</div>
+                <div class="job-duration">Ene 2022 — Ago 2022</div>
+                <div class="job-techs">
+                    <span class="job-tech">Dynamics 365</span>
+                    <span class="job-tech">SQL</span>
+                    <span class="job-tech">VS.NET</span>
+                </div>
+                <p style="color: var(--muted); margin-top: 0.75rem; font-size: 0.9rem;">Diseño e integración de soluciones de negocio personalizadas en Dynamics 365 con SQL y VS.NET. Optimización de procesos de facturación y reportes mediante modelado de datos eficiente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Proyectos</h2>
+            
+            <div class="project-card">
+                <div class="project-title">Microservicios Financieros (LATAM)</div>
                 <div class="project-meta">Java 21 · Go · Kafka · Redis</div>
-                <p>Desarrollo de microservicios para el procesamiento de millones de transacciones diarias en LATAM, con arquitectura event-driven y soporte multi-tenant/multi-país.</div>
+                <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Desarrollo de microservicios para el procesamiento de millones de transacciones diarias en LATAM, con arquitectura event-driven y soporte multi-tenant/multi-país.</div>
                 <div class="project-links">
                     <a href="https://github.com/felipaus" class="project-link">GitHub</a>
                 </div>
             </div>
-            <div class="project">
-                <h3>Automatización de Conciliación</h3>
-                <div class="project-meta">Reducción 30% trabajo manual</div>
-                <p>Automatización de flujos de conciliación y localización de productos, integrando con observabilidad avanzada (DataDog/New Relic) y Circuit Breaker.</div>
-                <div class="project-links">
-                    <a href="https://github.com/felipaus" class="project-link">GitHub</a>
-                </div>
-            </div>
-        </section>
 
-        <!-- Contact -->
-        <section class="section" id="contact" style="background: #f8fafc;">
-            <h2>Contacto</h2>
-            <div class="contact-item">
-                <h3>Email</h3>
-                <p><a href="mailto:felipesanchez_13@hotmail.com">felipesanchez_13@hotmail.com</a></p>
+            <div class="project-card">
+                <div class="project-title">Automatización de Conciliación</div>
+                <div class="project-meta">Reducción 30% trabajo manual</div>
+                <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Automatización de flujos de conciliación y localización de productos, integrando con observabilidad avanzada (DataDog/New Relic) y Circuit Breaker.</div>
+                <div class="project-links">
+                    <a href="https://github.com/felipaus" class="project-link">GitHub</a>
+                </div>
             </div>
-            <div class="contact-item">
-                <h3>LinkedIn</h3>
-                <p><a href="https://www.linkedin.com/in/felipesanchez231/" target="_blank">linkedin.com/in/felipesanchez231</a></p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-methods">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="mailto:felipesanchez_13@hotmail.com" style="color: var(--fg);">felipesanchez_13@hotmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://www.linkedin.com/in/felipesanchez231/" style="color: var(--fg);" target="_blank">linkedin.com/in/felipesanchez231</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🐙</div>
+                    <div class="contact-details">
+                        <h3>GitHub</h3>
+                        <p><a href="https://github.com/felipaus" style="color: var(--fg);" target="_blank">github.com/felipaus</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-                <h3>GitHub</h3>
-                <p><a href="https://github.com/felipaus" target="_blank">github.com/felipaus</a></p>
-            </div>
-        </section>
-    </div>
-    <footer class="footer" style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 3rem;">
-        Hecho con dedicación. Datos actualizados a 2026.
+        </div>
+    </section>
+
+    <footer>
+        <p>Hecho con dedicación. Datos actualizados a 2026.</p>
     </footer>
 </body>
 </html>
