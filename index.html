@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe Sanchez - Back-End Developer (SSR)</title>
+    <style>
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        body {font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; color: #212529; margin: 0; line-height: 1.6;}
+        .container {max-width: 800px; margin: 0 auto; padding: 2rem 1rem;}
+        h1 {font-size: 2rem; margin-bottom: 0.5rem; color: #1e293b;}
+        h2 {font-size: 1.5rem; color: #334155; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;}
+        h3 {font-size: 1.25rem; color: #3b82f6; margin-bottom: 0.5rem;}
+        p {color: #475569; margin-bottom: 1rem;}
+        .section {margin-bottom: 3rem;}
+        .skill {display: inline-block; background: #e2e8f0; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; margin: 2px;}
+        .project {background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 1.5rem; margin-bottom: 1rem;}
+        .project h3 {color: #1e293b; margin: 0 0 0.5rem 0;}
+        .project-meta {color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;}
+        .project-links {margin-top: 0.5rem;}
+        .project-link {color: #3b82f6; text-decoration: none; font-size: 0.85rem;}
+        .contact-item {background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 1rem; margin-bottom: 0.5rem;}
+        .contact-item h3 {color: #1e293b; margin: 0 0 0.5rem 0; font-size: 1rem;}
+        .contact-item a {color: #3b82f6; text-decoration: none;}
+        .contact-item a:hover {text-decoration: underline;}
+        a {color: #1e293b; text-decoration: none;}
+        a:hover {color: #3b82f6;}
+        .footer {color: #64748b; font-size: 0.85rem; text-align: center; margin-top: 3rem;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 2rem;">
+            <h1>Felipe Sanchez</h1>
+            <p>Back-End Developer (SSR)</p>
+        </header>
+
+        <!-- About -->
+        <section class="section" id="about">
+            <h2>Sobre mí</h2>
+            <p>Soy Back-End Developer (SSR) en Mercado Libre, dentro del equipo Fintech (Payouts). Desarrollo y mantengo microservicios financieros en Java 21 y Go que procesan millones de transacciones diarias en LATAM.</p>
+            <p>Mi foco es la excelencia técnica: lidero upgrades de seguridad críticos, implemento arquitecturas event-driven y soporte multi-tenant/multi-país, y trabajo con observabilidad avanzada (DataDog, New Relic). Cuento con formación universitaria en informática y me apasiona aprender constantemente.</p>
+            <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">4+ años experiencia</span>
+                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Mercado Libre</span>
+                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Java 17/21</span>
+                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Go · Spring Boot</span>
+                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">Kafka · Redis</span>
+                <span style="background: #e2e8f0; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;">SDLC Security</span>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section" id="experience">
+            <h2>Experiencia</h2>
+            <div class="job">
+                <h3>Back-End Developer (SSR) — Fintech</h3>
+                <div class="job-meta">Mercado Libre • Jun 2024 — Presente</div>
+                <p>Desarrollo y mantenimiento de microservicios financieros en Java 21 y Go para el procesamiento de millones de transacciones diarias en LATAM.</p>
+                <ul>
+                    <li>Gestión de infraestructura cloud distribuida con mensajería asíncrona (Kafka) y persistencia de baja latencia (KVS: Redis/DynamoDB).</li>
+                    <li>Liderazgo en upgrades de seguridad críticos y resolución de dependencias complejas (SAST), asegurando compliance financiero.</li>
+                    <li>Implementación de arquitectura event-driven para sincronización de cuentas bancarias y operaciones batch a gran escala.</li>
+                    <li>Soporte multi-tenant / multi-país con configuración dinámica por ambiente y feature flags.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>Back-End Developer</h3>
+                <div class="job-meta">Mercado Libre • Ago 2022 — Jun 2024</div>
+                <ul>
+                    <li>Automatización de flujos de conciliación y localización de productos, reduciendo el trabajo manual en un 30%.</li>
+                    <li>Integración de servicios con observabilidad avanzada (DataDog/New Relic) y métricas de resiliencia (Circuit Breaker).</li>
+                    <li>Diseño de APIs robustas con Spring Boot y bases de datos relacionales/NoSQL.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>Developer (Microsoft Dynamics)</h3>
+                <div class="job-meta">TPSSA • Ene 2022 — Ago 2022</div>
+                <ul>
+                    <li>Diseño e integración de soluciones de negocio personalizadas en Dynamics 365 con SQL y VS.NET.</li>
+                    <li>Optimización de procesos de facturación y reportes mediante modelado de datos eficiente.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section" id="skills">
+            <h2>Skills</h2>
+            <p>Tecnologías y herramientas con las que trabajo a diario:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                <span class="skill">Java 17/21</span>
+                <span class="skill">Go</span>
+                <span class="skill">Spring Boot 3.x</span>
+                <span class="skill">Gin</span>
+                <span class="skill">Hibernate</span>
+                <span class="skill">Kafka</span>
+                <span class="skill">Redis</span>
+                <span class="skill">DynamoDB</span>
+                <span class="skill">Elasticsearch</span>
+                <span class="skill">MySQL</span>
+                <span class="skill">Docker</span>
+                <span class="skill">Kubernetes</span>
+                <span class="skill">DataDog</span>
+                <span class="skill">New Relic</span>
+                <span class="skill">SDLC Security</span>
+                <span class="skill">OAuth2/JWT</span>
+                <span class="skill">JUnit 5</span>
+                <span class="skill">Mockito</span>
+                <span class="skill">TDD</span>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+            <h2>Proyectos</h2>
+            <div class="project">
+                <h3>Microservicios Financieros (LATAM)</h3>
+                <div class="project-meta">Java 21 · Go · Kafka · Redis</div>
+                <p>Desarrollo de microservicios para el procesamiento de millones de transacciones diarias en LATAM, con arquitectura event-driven y soporte multi-tenant/multi-país.</div>
+                <div class="project-links">
+                    <a href="https://github.com/felipaus" class="project-link">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3>Automatización de Conciliación</h3>
+                <div class="project-meta">Reducción 30% trabajo manual</div>
+                <p>Automatización de flujos de conciliación y localización de productos, integrando con observabilidad avanzada (DataDog/New Relic) y Circuit Breaker.</div>
+                <div class="project-links">
+                    <a href="https://github.com/felipaus" class="project-link">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact" style="background: #f8fafc;">
+            <h2>Contacto</h2>
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p><a href="mailto:felipesanchez_13@hotmail.com">felipesanchez_13@hotmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/felipesanchez231/" target="_blank">linkedin.com/in/felipesanchez231</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>GitHub</h3>
+                <p><a href="https://github.com/felipaus" target="_blank">github.com/felipaus</a></p>
+            </div>
+        </section>
+    </div>
+    <footer class="footer" style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 3rem;">
+        Hecho con dedicación. Datos actualizados a 2026.
+    </footer>
+</body>
+</html>
